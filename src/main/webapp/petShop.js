@@ -7,9 +7,11 @@ const petTableBody = document.getElementById("petTable");
 loginBtn.onclick = loginFunc;
 showPetsBtn.onclick = getPets;
 
+const API_URL ='http://localhost:8080/UserMgmtServlet/app'
+
 async function getPets(){
     let response = await 
-        fetch("http://localhost:8080/MyLittlePetShop4/app/pets",
+        fetch(API_URL+"/pets",
         {
             method:"GET",
             credentials:'include'
@@ -29,7 +31,7 @@ async function loginFunc(){
 
     let json = JSON.stringify(user);
 
-    let response = await fetch('http://localhost:8080/MyLittlePetShop4/app/login',{
+    let response = await fetch(API_URL,{
             method:'POST',
             body:json,
             credentials:'include'//ensures browser handles cookies properly
